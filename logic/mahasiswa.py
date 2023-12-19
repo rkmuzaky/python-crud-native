@@ -11,3 +11,9 @@ class MahasiswaLogic:
     def creates(self, entities: list[MahasiswaEntity]):
         for ent in entities:
             self.repo.create_mahasiswa(ent)
+
+    def delete(self, nim: str):
+        self.repo.delete_mhs(nim)
+        
+    def update(self, nim, address: str):
+        self.repo.update_mhs(nim, address)

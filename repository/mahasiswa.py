@@ -12,3 +12,15 @@ class MahasiswaRepo(MahasiswaAbstract):
         values =(mhs.nim, mhs.name, mhs.address)
         self.cursor.execute(query, values)
         self.conn.commit()
+
+    def delete_mhs(self, nim: str):
+        query = "DELETE FROM mahasiswa WHERE nim= %s"
+        values = (nim,)
+        self.cursor.execute(query, values)
+        self.conn.commit()
+    
+    def update_mhs(self, nim, address: str):
+        query = "UPDATE mahasiswa SET address = (%s) WHERE nim= %s"
+        values = (address, nim)
+        self.cursor.execute(query, values)
+        self.conn.commit()
